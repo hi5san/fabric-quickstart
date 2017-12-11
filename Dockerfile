@@ -63,11 +63,8 @@ RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo bash - && \
 ENV PATH $PATH:/usr/lib/go-1.9/bin
 #RUN sudo apt-get install -y go python
 
-#RUN sudo service docker start && \
-#	curl -sSL https://goo.gl/5ftp2f |sudo -E bash -
-
 RUN echo '#!/bin/sh' > $HOME/installFabric.sh && \
-    echo 'curl -sSL https://goo.gl/5ftp2f | bash -' >> $HOME/installFabric.sh && \
+    echo 'curl -sSL https://goo.gl/byy2Qj | bash -s 1.0.5 -' >> $HOME/installFabric.sh && \
     chmod a+rx installFabric.sh
 ENV PATH $PATH:/home/user/bin
  
