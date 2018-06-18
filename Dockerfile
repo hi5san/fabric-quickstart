@@ -48,10 +48,10 @@ RUN apt-get update && \
 USER user:docker
 WORKDIR /home/user
 
-#node v8
-#RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo bash - && \
 #node v6
-RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo bash - && \
+#RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo bash - && \
+#node v8
+RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo bash - && \
     sudo apt-get update && \
     sudo apt-get install -y nodejs golang-1.9-go && \
     sudo apt-get clean && \
@@ -64,17 +64,17 @@ ENV PATH $PATH:/usr/lib/go-1.9/bin
 #RUN sudo apt-get install -y go python
 
 RUN echo '#!/bin/sh' > $HOME/installFabric.sh && \
-    echo 'curl -sSL https://goo.gl/kFFqh5 | bash -s 1.0.6' >> $HOME/installFabric.sh && \
+    echo 'curl -sSL https://goo.gl/6wtTN5 | bash -s 1.1.0' >> $HOME/installFabric.sh && \
     chmod a+rx installFabric.sh
-ENV PATH $PATH:/home/user/bin
+ENV PATH $PATH:/home/user/fabric-samples/bin
  
 RUN echo '#!/bin/sh' > $HOME/installSamples.sh && \
     echo 'echo Getting fabric samples..' >> $HOME/installSamples.sh && \
-    echo 'git clone https://github.com/hyperledger/fabric-samples.git -b v1.0.6' >> $HOME/installSamples.sh && \
-    echo 'cd fabric-samples; git clone https://github.com/IBM-Blockchain/marbles.git --single-branch --branch v4.0' >> $HOME/installSamples.sh && \
-    echo 'cd marbles; git checkout a1f3723d;' >> $HOME/installSamples.sh && \
-    echo "sed -i '/pug/i \                \"grpc\" : \"1.10.1\",' package.json" >> $HOME/installSamples.sh && \
-    echo 'sudo npm install gulp -g; npm install' >> $HOME/installSamples.sh && \
+    echo 'git clone https://github.com/hyperledger/fabric-samples.git -b v1.1.0' >> $HOME/installSamples.sh && \
+    echo 'cd fabric-samples; git clone https://github.com/IBM-Blockchain/marbles.git --single-branch --branch v5.0' >> $HOME/installSamples.sh && \
+    echo 'cd marbles; sudo npm install gulp -g' >> $HOME/installSamples.sh && \
+    echo 'sudo chown -R user:docker $HOME/.config' >> $HOME/installSamples.sh && \
+    echo 'npm install' >> $HOME/installSamples.sh && \
     echo 'mkdir $HOME/.hfc-key-store' >> $HOME/installSamples.sh && \
     chmod a+rx installSamples.sh && \
     ./installSamples.sh

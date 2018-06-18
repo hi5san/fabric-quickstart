@@ -1,7 +1,7 @@
 # Fabric Quickstart
 A Quickstart Docker container for Hyperledger Fabric v1 (16.04LTS-xenial + Docker + fabric samples &amp; scripts).
 
-This Dockerfile creates Ubuntu64 16.04LTS (xenial) docker container pre-bundled with Docker within, and other dependent packages required to run Hyperledger Fabric v1.0 release (curr: 1.0.6).  Also, the samples (official samples and also [marbles](https://github.com/IBM-Blockchain/marbles#use-marbles)) are pre-installed, with utility scripts for ease of trying things out.  See the Dockerfile for details.
+This Dockerfile creates Ubuntu64 16.04LTS (xenial) docker container pre-bundled with Docker within, and other dependent packages required to run Hyperledger Fabric v1.1 release (curr: 1.1.0).  Also, the samples (official samples and also [marbles](https://github.com/IBM-Blockchain/marbles#use-marbles)) are pre-installed, with utility scripts for ease of trying things out.  See the Dockerfile for details.
 
 Note:  Actually, using Ubuntu as base OS is not required to run Hyperledger Fabric.  Hyperledger Fabric can run directly on docker baseos.  If you're uninterested in Ubuntu, simply follow steps in the official page =).  The reason we prepared and are using Ubuntu here are only because we defined our project reference environment to base on Ubuntu.
 
