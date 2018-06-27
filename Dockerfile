@@ -64,10 +64,11 @@ ENV PATH $PATH:/usr/lib/go-1.9/bin
 #RUN sudo apt-get install -y go python
 
 RUN echo '#!/bin/sh' > $HOME/installFabric.sh && \
-    echo 'curl -sSL https://goo.gl/6wtTN5 | bash -s 1.1.0' >> $HOME/installFabric.sh && \
+#    echo 'curl -sSL https://goo.gl/6wtTN5 | bash -s 1.1.0 1.1.0 0.4.6 -s' >> $HOME/installFabric.sh && \
+    echo 'curl -sSL https://goo.gl/PKqygD | bash -s 1.1.0' >> $HOME/installFabric.sh && \
     chmod a+rx installFabric.sh
-ENV PATH $PATH:/home/user/fabric-samples/bin
- 
+ENV PATH $PATH:/home/user/bin
+
 RUN echo '#!/bin/sh' > $HOME/installSamples.sh && \
     echo 'echo Getting fabric samples..' >> $HOME/installSamples.sh && \
     echo 'git clone https://github.com/hyperledger/fabric-samples.git -b v1.1.0' >> $HOME/installSamples.sh && \
@@ -75,7 +76,7 @@ RUN echo '#!/bin/sh' > $HOME/installSamples.sh && \
     echo 'cd marbles; sudo npm install gulp -g' >> $HOME/installSamples.sh && \
     echo 'sudo chown -R user:docker $HOME/.config' >> $HOME/installSamples.sh && \
     echo 'npm install' >> $HOME/installSamples.sh && \
-    echo 'mkdir $HOME/.hfc-key-store' >> $HOME/installSamples.sh && \
+    echo 'rm -fr $HOME/.hfc-key-store; mkdir -p $HOME/.hfc-key-store' >> $HOME/installSamples.sh && \
     chmod a+rx installSamples.sh && \
     ./installSamples.sh
 
@@ -101,7 +102,7 @@ RUN echo '#!/bin/sh' > $HOME/tryMarbles.sh && \
 VOLUME /var/lib/docker
 EXPOSE 3001
 
-ENV TZ JST-9
+#ENV TZ JST-9
 
 CMD sudo service docker start && /bin/bash
 
