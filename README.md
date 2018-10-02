@@ -148,4 +148,4 @@ Look for the container using `docker ps -a` and call `docker rm {container-Id}`.
 
 Remove your docker images if you want: `docker rmi IMAGE-ID`.
 
-Finally, be sure to call `docker system prune` to clean-up stale files.
+Finally, be sure to call `docker system prune` and `docker volume prune` to clean-up stale files.
