@@ -1,7 +1,7 @@
 # Fabric Quickstart
-A Quickstart Docker container for Hyperledger Fabric v1 (16.04LTS-xenial + Docker + fabric samples &amp; scripts).
+A Quickstart Docker container for Hyperledger Fabric v1 (18.04LTS-bionic + Docker + fabric samples).
 
-This Dockerfile creates Ubuntu64 16.04LTS (xenial) docker container pre-bundled with Docker within, and other dependent packages required to run Hyperledger Fabric v1.1 release (curr: 1.1.0).  Also, the samples (official samples and also [marbles](https://github.com/IBM-Blockchain/marbles#use-marbles)) are pre-installed, with utility scripts for ease of trying things out.  See the Dockerfile for details.
+This Dockerfile creates Ubuntu64 18.04LTS (bionic) docker container pre-bundled with Docker within, and other dependent packages required to run Hyperledger Fabric v1.2 release (curr: 1.2.0).
 
 Note:  Actually, using Ubuntu as base OS is not required to run Hyperledger Fabric.  Hyperledger Fabric can run directly on docker baseos.  If you're uninterested in Ubuntu, simply follow steps in the official page =).  The reason we prepared and are using Ubuntu here are only because we defined our project reference environment to base on Ubuntu.
 
@@ -39,126 +39,113 @@ Once the container is started:  
 
 Example run:  
 ```
-user@3b81d88e8ac8:~$ ./installFabric.sh 
-===> Downloading platform binaries
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-100 22.6M  100 22.6M    0     0  1943k      0  0:00:11  0:00:11 --:--:-- 1813k
-===> Pulling fabric Images
-==> FABRIC IMAGE: peer
+user@3b81d88e8ac8:~$ ./installFabric.sh
 
-x86_64-1.0.4: Pulling from hyperledger/fabric-peer
-d5c6f90da05d: Downloading [==============================>                    ]  28.51MB/47.26MB
-1300883d87d5: Download complete 
-c220aa3cfc1b: Download complete 
-2e9398f099dc: Download complete 
-dc27a084064f: Download complete 
-87675a6d4030: Download complete 
-93e601aafda8: Download complete 
-278385815258: Download complete 
-78f3c6b30e0c: Downloading
+Installing hyperledger/fabric-samples repo
+
+===> Cloning hyperledger/fabric-samples repo and checkout v1.2.0
+Cloning into 'fabric-samples'...
+remote: Enumerating objects: 1, done.
+remote: Counting objects: 100% (1/1), done.
+remote: Total 1863 (delta 0), reused 0 (delta 0), pack-reused 1862
+Receiving objects: 100% (1863/1863), 642.42 KiB | 204.00 KiB/s, done.
+Resolving deltas: 100% (910/910), done.
+Note: checking out 'v1.2.0'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+HEAD is now at ed81d7b [FAB-10811] fabric-ca sample is broken on v1.2
+
+Installing Hyperledger Fabric binaries
+
+===> Downloading version 1.2.0 platform specific fabric binaries
+===> Downloading:  https://nexus.hyperledger.org/content/repositories/releases/org/hyperledger/fabric/hyperledger-fabric/linux-amd64-1.2.0/hyperledger-fabric-linux-amd64-1.2.0.tar.gz
+
 ...
 ===> List out hyperledger docker images
-hyperledger/fabric-ca          latest              8e691b3509bf        4 weeks ago         238MB
-hyperledger/fabric-ca          x86_64-1.0.4        8e691b3509bf        4 weeks ago         238MB
-hyperledger/fabric-tools       latest              6051774928a6        4 weeks ago         1.33GB
-hyperledger/fabric-tools       x86_64-1.0.4        6051774928a6        4 weeks ago         1.33GB
-hyperledger/fabric-couchdb     latest              cf24b91dfeb1        4 weeks ago         1.5GB
-hyperledger/fabric-couchdb     x86_64-1.0.4        cf24b91dfeb1        4 weeks ago         1.5GB
-hyperledger/fabric-kafka       latest              7a9d6f3c4a7c        4 weeks ago         1.29GB
-hyperledger/fabric-kafka       x86_64-1.0.4        7a9d6f3c4a7c        4 weeks ago         1.29GB
-hyperledger/fabric-zookeeper   latest              53c4a0d95fd4        4 weeks ago         1.3GB
-hyperledger/fabric-zookeeper   x86_64-1.0.4        53c4a0d95fd4        4 weeks ago         1.3GB
-hyperledger/fabric-orderer     latest              b17741e7b036        4 weeks ago         151MB
-hyperledger/fabric-orderer     x86_64-1.0.4        b17741e7b036        4 weeks ago         151MB
-hyperledger/fabric-peer        latest              1ce935adc397        4 weeks ago         154MB
-hyperledger/fabric-peer        x86_64-1.0.4        1ce935adc397        4 weeks ago         154MB
-hyperledger/fabric-javaenv     latest              a517b70135c7        4 weeks ago         1.41GB
-hyperledger/fabric-javaenv     x86_64-1.0.4        a517b70135c7        4 weeks ago         1.41GB
-hyperledger/fabric-ccenv       latest              856061b1fed7        4 weeks ago         1.28GB
-hyperledger/fabric-ccenv       x86_64-1.0.4        856061b1fed7        4 weeks ago         1.28GB
+hyperledger/fabric-ca          1.2.0               66cc132bd09c        3 months ago        252MB
+hyperledger/fabric-ca          latest              66cc132bd09c        3 months ago        252MB
+hyperledger/fabric-tools       1.2.0               379602873003        3 months ago        1.51GB
+hyperledger/fabric-tools       latest              379602873003        3 months ago        1.51GB
+hyperledger/fabric-ccenv       1.2.0               6acf31e2d9a4        3 months ago        1.43GB
+hyperledger/fabric-ccenv       latest              6acf31e2d9a4        3 months ago        1.43GB
+hyperledger/fabric-orderer     1.2.0               4baf7789a8ec        3 months ago        152MB
+hyperledger/fabric-orderer     latest              4baf7789a8ec        3 months ago        152MB
+hyperledger/fabric-peer        1.2.0               82c262e65984        3 months ago        159MB
+hyperledger/fabric-peer        latest              82c262e65984        3 months ago        159MB
+hyperledger/fabric-zookeeper   0.4.10              2b51158f3898        3 months ago        1.44GB
+hyperledger/fabric-zookeeper   latest              2b51158f3898        3 months ago        1.44GB
+hyperledger/fabric-kafka       0.4.10              936aef6db0e6        3 months ago        1.45GB
+hyperledger/fabric-kafka       latest              936aef6db0e6        3 months ago        1.45GB
+hyperledger/fabric-couchdb     0.4.10              3092eca241fc        3 months ago        1.61GB
+hyperledger/fabric-couchdb     latest              3092eca241fc        3 months ago        1.61GB
 ```
 
 # Running the Fabric network and the samples 
 * Run fabric network  
-`./startFabricNet.sh`
-
-```
-
-# don't rewrite paths for Windows Git Bash users
-export MSYS_NO_PATHCONV=1
-
-docker-compose -f docker-compose.yml down
-Removing network net_basic
-WARNING: Network net_basic not found.
-
-docker-compose -f docker-compose.yml up -d ca.example.com orderer.example.com peer0.org1.example.com couchdb
-Creating network "net_basic" with the default driver
-Creating orderer.example.com
-Creating couchdb
-Creating ca.example.com
-Creating peer0.org1.example.com
+```shell
+$ cd fabric-samples/fabcar`
+$ ./startFabric.sh
 ...
-# Join peer0.org1.example.com to the channel.
-docker exec -e "CORE_PEER_LOCALMSPID=Org1MSP" -e "CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/users/Admin@org1.example.com/msp" peer0.org1.example.com peer channel join -b mychannel.block
-2017-12-04 03:45:05.848 UTC [msp] GetLocalMSP -> DEBU 001 Returning existing local MSP
-2017-12-04 03:45:05.848 UTC [msp] GetDefaultSigningIdentity -> DEBU 002 Obtaining default signing identity
-2017-12-04 03:45:05.850 UTC [channelCmd] InitCmdFactory -> INFO 003 Endorser and orderer connections initialized
-2017-12-04 03:45:05.851 UTC [msp/identity] Sign -> DEBU 004 Sign: plaintext: 0A86070A5C08011A0C08C18993D10510...3242E47F4E7F1A080A000A000A000A00 
-2017-12-04 03:45:05.851 UTC [msp/identity] Sign -> DEBU 005 Sign: digest: 70F33AF4F13AD74AE1FD915007B77617AA2B26E2C0B116069AE92D1BB93EF399 
-2017-12-04 03:45:05.929 UTC [channelCmd] executeJoin -> INFO 006 Peer joined the channel!
-2017-12-04 03:45:05.929 UTC [main] main -> INFO 007 Exiting.....
 ```
 
-* Run marbles  
-The "tryMarbles.sh" will:   
-1. run the chaincode install script   
-2. run the chaincode instantiate script  
-3. Run the Marbles demo app  
-
+* Follow directions 
 ```
-user@3b81d88e8ac8:~$ cat tryMarbles.sh 
-#!/bin/sh
-(cd fabric-samples/marbles/scripts; node install_chaincode.js; node instantiate_chaincode.js)
-(cd fabric-samples/marbles; gulp marbles_local &)
-```
-
-Example run:  
-```
-user@3b81d88e8ac8:~$ ./tryMarbles.sh 
-info: Loaded config file /home/user/fabric-samples/marbles/config/marbles_local.json
-info: Loaded creds file /home/user/fabric-samples/marbles/config/blockchain_creds_local.json
----------------------------------------
-info: Lets install some chaincode - marbles v4
+$ npm install
 ...
-info: Fetching EVERYTHING...
-debug: [fcw] Querying Chaincode: read_everything()
-debug: [fcw] Sending query req: chaincodeId=marbles, fcn=read_everything, args=[], txId=null
-debug: [fcw] Peer Query Response - len: 30 type: object
-debug: [fcw] Successful query transaction.
-debug: Looking for marble owner: amy
-debug: Did not find marble username: amy
-info: We need to make marble owners
-
-info: Detected that we have NOT launched successfully yet
-debug: Open your browser to http://localhost:3001 and login as "admin" to initiate startup
-
+$ node enrollAdmin.js
+ Store path:/home/user/fabric-samples/fabcar/hfc-key-store
+(node:3698) DeprecationWarning: grpc.load: Use the @grpc/proto-loader module with grpc.loadPackageDefinition instead
+Successfully enrolled admin user "admin"
+...
+$ node registerUser.js
+ Store path:/home/user/fabric-samples/fabcar/hfc-key-store
+(node:3711) DeprecationWarning: grpc.load: Use the @grpc/proto-loader module with grpc.loadPackageDefinition instead
+Successfully loaded admin from persistence
+Successfully registered user1 - secret:**********
+Successfully enrolled member user "user1" 
+User1 was successfully registered and enrolled and is ready to interact with the fabric network
+$ node query.js
+Store path:/home/user/fabric-samples/fabcar/hfc-key-store
+(node:3724) DeprecationWarning: grpc.load: Use the @grpc/proto-loader module with grpc.loadPackageDefinition instead
+Successfully loaded user1 from persistence
+Query has completed, checking results
+Response is  [{"Key":"CAR0", "Record":{"colour":"blue","make":"Toyota","model":"Prius","owner":"Tomoko"}},{"Key":"CAR1", "Record":{"colour":"red","make":"Ford","model":"Mustang","owner":"Brad"}},{"Key":"CAR2", "Record":{"colour":"green","make":"Hyundai","model":"Tucson","owner":"Jin Soo"}},{"Key":"CAR3", "Record":{"colour":"yellow","make":"Volkswagen","model":"Passat","owner":"Max"}},{"Key":"CAR4", "Record":{"colour":"black","make":"Tesla","model":"S","owner":"Adriana"}},{"Key":"CAR5", "Record":{"colour":"purple","make":"Peugeot","model":"205","owner":"Michel"}},{"Key":"CAR6", "Record":{"colour":"white","make":"Chery","model":"S22L","owner":"Aarav"}},{"Key":"CAR7", "Record":{"colour":"violet","make":"Fiat","model":"Punto","owner":"Pari"}},{"Key":"CAR8", "Record":{"colour":"indigo","make":"Tata","model":"Nano","owner":"Valeria"}},{"Key":"CAR9", "Record":{"colour":"brown","make":"Holden","model":"Barina","owner":"Shotaro"}}]
 ```
-
-* Connect to running marbles app (port:3001 on localhost)  
-Open a browser of choice on host PC, and connect to port 3001.
-
-http://localhost:3001/
-
-The marbles app's initial page (create admin user) should be shown.
-
-See [the marbles docs](https://github.com/IBM-Blockchain/marbles#use-marbles) for how to play with it.
-
 
 * Shutdown the Fabric network  
-`./stopFabricNet.sh`
+```shell
+$ cd ../basic-network
+$ ./teardown.sh
+Killing cli                    ... done
+Killing peer0.org1.example.com ... done
+Killing ca.example.com         ... done
+Killing couchdb                ... done
+Killing orderer.example.com    ... done
+Removing cli                    ... done
+Removing peer0.org1.example.com ... done
+Removing ca.example.com         ... done
+Removing couchdb                ... done
+Removing orderer.example.com    ... done
+Removing network net_basic
+85b8e6d05193
+Untagged: dev-peer0.org1.example.com-fabcar-1.0-5c906e402ed29f20260ae42283216aa75549c571e2e380f3615826365d8269ba:latest
+Deleted: sha256:585929b763a5e34977e9471dfe9b5aa58ee9d28e73727ee31dbe41c1645322f8
+Deleted: sha256:55743a1d77cf618003979806c606c56cf7f96e754894082bb0207bd5f58606ca
+Deleted: sha256:66c9bdcc86bbd74ff25bc6928d30930075c7a32d82588b9e043fde4e3526f9d1
+Deleted: sha256:302ac00c5b351f41db14ab5750b9ce756c1e31b236f0548f72898cac5472935f
+```
 
+# Quiting
+Look for the container using `docker ps -a` and call `docker rm {container-Id}`.
 
+Remove your docker images if you want: `docker rmi IMAGE-ID`.
 
-
-
+Finally, be sure to call `docker system prune` to clean-up stale files.
