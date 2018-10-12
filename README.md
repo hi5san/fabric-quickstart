@@ -1,7 +1,7 @@
 # Fabric Quickstart
 A Quickstart Docker container for Hyperledger Fabric v1 (18.04LTS-bionic + Docker + fabric samples).
 
-This Dockerfile creates Ubuntu64 18.04LTS (bionic) docker container pre-bundled with Docker within, and other dependent packages required to run Hyperledger Fabric v1.2 release (curr: 1.2.0).
+This Dockerfile creates Ubuntu64 18.04LTS (bionic) docker container pre-bundled with Docker within, and other dependent packages required to run Hyperledger Fabric v1.2 release (curr: 1.2.1).
 
 Note:  Actually, using Ubuntu as base OS is not required to run Hyperledger Fabric.  Hyperledger Fabric can run directly on docker baseos.  If you're uninterested in Ubuntu, simply follow steps in the official page =).  The reason we prepared and are using Ubuntu here are only because we defined our project reference environment to base on Ubuntu.
 
