@@ -25,7 +25,7 @@ Note: The pulls/builds of images will take several minutes and approx. 1GB in st
 
 If pulled from remote:  
 
-`docker run --name fabric-book --privileged -it -p 3001:3001 hi5san/fabric-quickstart:v1.4.3` 
+`docker run --name fabric-book --privileged -it -p 3001:3001 hi5san/fabric-quickstart` 
 
 or if built locally:
 
