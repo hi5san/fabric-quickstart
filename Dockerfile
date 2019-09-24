@@ -62,7 +62,8 @@ ENV PATH $PATH:/usr/lib/go/bin
 
 RUN echo '#!/bin/sh' > $HOME/installFabric.sh && \
 #    echo 'curl -sSL https://goo.gl/6wtTN5 | bash -s 1.1.0 1.1.0 0.4.6 -s' >> $HOME/installFabric.sh && \
-    echo 'curl -sSL https://raw.githubusercontent.com/hyperledger/fabric/release-1.2/scripts/bootstrap.sh | bash' >> $HOME/installFabric.sh && \
+#   echo 'curl -sSL https://raw.githubusercontent.com/hyperledger/fabric/release-1.2/scripts/bootstrap.sh | bash' >> $HOME/installFabric.sh && \
+    echo 'curl -sSL http://bit.ly/2ysbOFE | bash -s -- 1.4.3 1.4.3 0.4.15' >> $HOME/installFabric.sh && \
     chmod a+rx installFabric.sh
 ENV PATH $PATH:/home/user/bin
 
